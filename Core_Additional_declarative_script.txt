@@ -7,17 +7,16 @@ pipeline
             }
     stages
     {
-        
         stage('checkout')
         {
             /*tools { JDK "1.8.0_301" }*/
             steps {
                 echo 'Fetching source code from SCM'
                 echo "${params.USER}"
+                script{
+                    println 'code is checking out'
+                }
             }
-            /*script{
-                println 'code is checking out'
-            }*/
         }
         stage('Build')
         {
@@ -46,16 +45,13 @@ pipeline
                     branch 'main'
                 }
             input {
-                    /* groovylint-disable-next-line UnnecessaryGString */
 		            message 'Do you want to deploy to production server'
 		            submitter 'admin'
 		            parameters {
-                    /* groovylint-disable-next-line DuplicateStringLiteral */
 			                string (name:'Administrator', defaultValue: 'admin', description: 'Deploying the build after QA approval')
                         }
             }
             steps {
-                /* groovylint-disable-next-line DuplicateStringLiteral */
                 echo 'Testing the code'
             }
             post {
