@@ -1,0 +1,26 @@
+/* groovylint-disable-next-line CompileStatic */
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('chechout')
+        {
+            steps {
+                echo 'Fetching source code from SCM'
+            }
+        }
+        stage('Build')
+        {
+            steps {
+                echo 'Building the source code'
+            }
+        }
+        stage('Testing')
+        {
+            steps {
+                echo 'Testing the code'
+            }
+        }
+    }
+}
