@@ -42,7 +42,7 @@ pipeline
         stage('Deploying')
         {
             when {
-                    branch 'master'
+                    branch 'main'
                 }
             input {
 		            message 'Do you want to deploy to production server'
